@@ -46,7 +46,7 @@ public class JwtUtils {
         });
 
         // 整合有效期
-        builder.withExpiresAt(date);
+        // builder.withExpiresAt(date);
 
         // 加盐，生成token
         String sign = builder.sign(Algorithm.HMAC256(SIGN));

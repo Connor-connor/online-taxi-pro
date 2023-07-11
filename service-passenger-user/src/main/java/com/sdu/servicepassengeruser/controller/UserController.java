@@ -4,10 +4,7 @@ import com.sdu.internalcommon.dto.ResponseResult;
 import com.sdu.internalcommon.request.VerificationCodeDTO;
 import com.sdu.servicepassengeruser.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author LHP
@@ -29,10 +26,8 @@ public class UserController {
         return userService.loginOrRegister(passengerPhone);
     }
 
-    @GetMapping("/user")
-    public ResponseResult getUser(@RequestBody VerificationCodeDTO verificationCodeDTO) {
-        // 接收参数（获取手机号）
-        String passengerPhone = verificationCodeDTO.getPassengerPhone();
+    @GetMapping("/user/{phone}")
+    public ResponseResult getUser(@PathVariable("phone") String passengerPhone) {
         return userService.getUserByPhone(passengerPhone);
 
     }

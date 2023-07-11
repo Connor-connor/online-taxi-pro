@@ -26,7 +26,7 @@ public class UserController {
         return userService.loginOrRegister(passengerPhone);
     }
 
-    @GetMapping("/user/{phone}")
+    @GetMapping("/user/{phone}")  // 防止feign的post转get的bug
     public ResponseResult getUser(@PathVariable("phone") String passengerPhone) {
         return userService.getUserByPhone(passengerPhone);
 

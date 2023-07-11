@@ -21,7 +21,7 @@ public interface ServicePassengerUserClient {
     @RequestMapping(method = RequestMethod.POST, value = "/user")
     public ResponseResult loginOrRegister(@RequestBody VerificationCodeDTO verificationCodeDTO);
 
-    @RequestMapping(method = RequestMethod.GET, value = "/user/{phone}")
+    @RequestMapping(method = RequestMethod.GET, value = "/user/{phone}") // 防止feign的post转get的bug
     public ResponseResult<PassengerUser> getUserByPhone(@PathVariable("phone") String phone);
 
 }

@@ -41,7 +41,7 @@ public class JwtInterceptor implements HandlerInterceptor {
 
 
         if (tokenResult == null) {
-            resultString = "token is invalid";
+            resultString = "access token is invalid";
             result = false;
         } else {
             // 拼接key（我们传入的token的key）
@@ -53,7 +53,7 @@ public class JwtInterceptor implements HandlerInterceptor {
             String tokenRedis = stringRedisTemplate.opsForValue().get(tokenKey);
             // 比较我们传入的token和redis中的token是否一致
             if ((StringUtils.isBlank(tokenRedis)) || (!token.trim().equals(tokenRedis.trim()))) {
-                resultString = "token is invalid";
+                resultString = "access token is invalid";
                 result = false;
             }
         }

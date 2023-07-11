@@ -69,13 +69,13 @@ public class JwtUtils {
 
     }
 
-/*    public static void main(String[] args) {
+    public static void main(String[] args) {
         String s = generateToken("15553581029", "1");
         System.out.println("生成的token：" + s);
         System.out.println("解析-------------");
         TokenResult tokenResult = parseToken(s);
         System.out.println("手机号：" + tokenResult.getPhone());
         System.out.println("身份：" + tokenResult.getIdentity());
-    }*/
+    }
 
 }

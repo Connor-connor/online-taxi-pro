@@ -1,7 +1,6 @@
 package com.sdu.servicepassengeruser.service;
 
 import com.sdu.internalcommon.dto.ResponseResult;
-import com.sdu.servicepassengeruser.dto.PassengerUser;
 import com.sdu.servicepassengeruser.mapper.PassengerUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +9,6 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * @author LHP

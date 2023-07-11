@@ -1,4 +1,4 @@
-package com.sdu.servicepassengeruser.dto;
+package com.sdu.internalcommon.dto;
 
 import lombok.Data;
 
@@ -27,5 +27,6 @@ public class PassengerUser {
 
     private byte state;
 
+    private String profilePhoto;
 
 }

@@ -18,6 +18,7 @@ public enum CommonStatusEnum {
         TOKEN_ERROR(1199, "token错误"), // token错误：1100-1199
         USER_NOT_EXISTS(1299, "当前用户不存在"), // 用户不存在：1200-1299
         PRICE_NOT_EXISTS(1399, "计价规则不存在"), // 计价规则不存在：1300-1399
+        MAP_DISTRICT_ERROR(1499, "请求地图错误"), // 请求地图错误：1400-1499
         ;
 
         @Getter

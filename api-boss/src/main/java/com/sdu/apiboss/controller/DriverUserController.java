@@ -1,6 +1,8 @@
 package com.sdu.apiboss.controller;
 
+import com.sdu.apiboss.service.CarService;
 import com.sdu.apiboss.service.DriverUserService;
+import com.sdu.internalcommon.dto.Car;
 import com.sdu.internalcommon.dto.DriverUser;
 import com.sdu.internalcommon.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,14 @@ public class DriverUserController {
     @PutMapping("/driver-user")
     public ResponseResult updateDriverUser(@RequestBody DriverUser driverUser){
         return driverUserService.updateDriverUser(driverUser);
+    }
+
+    @Autowired
+    CarService carService;
+
+    @PostMapping("/car")
+    public ResponseResult car(@RequestBody Car car){
+        return carService.addCar(car);
     }
 
 }

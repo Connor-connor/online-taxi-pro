@@ -1,5 +1,7 @@
 package com.sdu.apiboss.remote;
 
+import com.sdu.internalcommon.dto.Car;
+import com.sdu.internalcommon.dto.DriverCarBindingRelationship;
 import com.sdu.internalcommon.dto.DriverUser;
 import com.sdu.internalcommon.dto.ResponseResult;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -20,4 +22,13 @@ public interface ServiceDriverUserClient {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/user")
     public ResponseResult updateDriverUser(@RequestBody DriverUser driverUser);
+
+    @RequestMapping(method = RequestMethod.POST, value = "/car")
+    public ResponseResult addCar(@RequestBody Car car);
+
+    @RequestMapping(method = RequestMethod.POST,value = "/driver-car-binding-relationship/bind")
+    public ResponseResult bind(@RequestBody DriverCarBindingRelationship driverCarBindingRelationship);
+
+    @RequestMapping(method = RequestMethod.POST,value = "/driver-car-binding-relationship/unbind")
+    ResponseResult unbind(DriverCarBindingRelationship driverCarBindingRelationship);
 }

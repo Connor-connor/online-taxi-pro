@@ -15,12 +15,12 @@ public class PriceRule {
 
     private Integer vehicleType;
 
-    private double startFare;
+    private Double startFare;
 
-    private int startMile;
+    private Integer startMile;
 
-    private double unitPricePerMile;
+    private Double unitPricePerMile;
 
-    private double unitPricePerMinute;
+    private Double unitPricePerMinute;
 
 }

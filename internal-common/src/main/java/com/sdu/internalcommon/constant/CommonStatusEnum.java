@@ -17,6 +17,7 @@ public enum CommonStatusEnum {
         VERIFICATION_CODE_ERROR(1099, "验证码错误"), // 验证码错误：1000-1099
         TOKEN_ERROR(1199, "token错误"), // token错误：1100-1199
         USER_NOT_EXISTS(1299, "当前用户不存在"), // 用户不存在：1200-1299
+        PRICE_NOT_EXISTS(1399, "计价规则不存在"), // 计价规则不存在：1300-1399
         ;
 
         @Getter

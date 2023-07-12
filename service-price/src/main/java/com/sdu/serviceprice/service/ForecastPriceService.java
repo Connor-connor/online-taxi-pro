@@ -6,6 +6,7 @@ import com.sdu.internalcommon.dto.ResponseResult;
 import com.sdu.internalcommon.request.ForecastPriceDTO;
 import com.sdu.internalcommon.response.DirectionResponse;
 import com.sdu.internalcommon.response.ForecastPriceResponse;
+import com.sdu.internalcommon.util.BigDecimalUtils;
 import com.sdu.serviceprice.mapper.PriceRuleMapper;
 import com.sdu.serviceprice.remote.ServiceMapClient;
 import lombok.extern.slf4j.Slf4j;
@@ -86,7 +87,43 @@ public class ForecastPriceService {
      * @return
      */
     private double getPrice(Integer distance, Integer duration, PriceRule priceRule) {
-        BigDecimal price = new BigDecimal(0);
+        double price = 0;
+
+        // 起步价
+        double startFare = priceRule.getStartFare();
+        price = BigDecimalUtils.add(price, startFare);
+
+        // 里程费
+        // 超出起步里程（总里程 - 起步里程）
+        // 总里程 m -> km
+        double distanceMile = BigDecimalUtils.divide(distance, 1000);
+        // 起步里程 km
+        double startMile = (double)priceRule.getStartMile();
+        // 总里程 - 起步里程
+        double distanceSubtract = BigDecimalUtils.substract(distanceMile, startMile);
+        // 最终收费的里程 km
+        double mile = distanceSubtract > 0 ? distanceSubtract : 0;
+        // 计程单价 元/km
+        double unitPricePerMile = priceRule.getUnitPricePerMile();
+        // 里程费（最终收费的里程 * 计程单价）
+        double mileFare = BigDecimalUtils.multiply(mile, unitPricePerMile);
+        price = BigDecimalUtils.add(price, mileFare);
+
+        // 时长费
+        // 时长 s -> min
+        double timeMinute = BigDecimalUtils.divide(duration, 60);
+        // 计时单价 元/min
+        double unitPricePerMinute = priceRule.getUnitPricePerMinute();
+        // 时长费（时长 * 计时单价）
+        double timeFare = BigDecimalUtils.multiply(timeMinute, unitPricePerMinute);
+        price = BigDecimalUtils.add(price, timeFare);
+
+        BigDecimal priceBigDecimal = new BigDecimal(price);
+        priceBigDecimal = priceBigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP);
+
+        return priceBigDecimal.doubleValue();
+
+        /*BigDecimal price = new BigDecimal(0);
 
         // 起步价
         Double startFare = priceRule.getStartFare();
@@ -126,7 +163,7 @@ public class ForecastPriceService {
         BigDecimal timeFare = timeBigDecimal.multiply(unitPricePerMinuteBigDecimal);
         price = price.add(timeFare).setScale(2, BigDecimal.ROUND_HALF_UP);
 
-        return price.doubleValue();
+        return price.doubleValue();*/
     }
 
 /*    public static void main(String[] args) {

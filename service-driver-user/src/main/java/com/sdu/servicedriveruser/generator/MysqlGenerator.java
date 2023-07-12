@@ -23,7 +23,7 @@ public class MysqlGenerator {
                     builder.parent("com.sdu.servicedriveruser").pathInfo(Collections.singletonMap(OutputFile.mapperXml, "E:\\Project\\CourseDesign\\online-taxi\\service-driver-user\\src\\main\\java\\com\\sdu\\servicedriveruser\\mapper"));
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("car");
+                    builder.addInclude("driver_car_binding_relationship");
                 })
                 .templateEngine(new FreemarkerTemplateEngine())
                 .execute();

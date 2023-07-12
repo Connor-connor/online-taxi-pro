@@ -100,17 +100,17 @@ public class Car implements Serializable {
     /**
      * 车辆运输证有效期起
      */
-    private LocalDateTime transDateStart;
+    private LocalDate transDateStart;
 
     /**
      * 车辆运输证有效期止
      */
-    private LocalDateTime transDateEnd;
+    private LocalDate transDateEnd;
 
     /**
      * 车辆初次登记日期
      */
-    private LocalDateTime certifyDateB;
+    private LocalDate certifyDateB;
 
     /**
      * 车辆检修状态：0-未检修，1-已检修，2-未知
@@ -165,7 +165,7 @@ public class Car implements Serializable {
     /**
      * 状态：0-有效，1-失效
      */
-    private Boolean state;
+    private Integer state;
 
     /**
      * 创建时间

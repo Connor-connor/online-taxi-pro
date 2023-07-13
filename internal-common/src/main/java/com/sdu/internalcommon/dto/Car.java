@@ -168,6 +168,16 @@ public class Car implements Serializable {
     private String tid;
 
     /**
+     * 轨迹id
+     */
+    private String trid;
+
+    /**
+     * 轨迹名称
+     */
+    private String trname;
+
+    /**
      * 状态：0-有效，1-失效
      */
     private Integer state;

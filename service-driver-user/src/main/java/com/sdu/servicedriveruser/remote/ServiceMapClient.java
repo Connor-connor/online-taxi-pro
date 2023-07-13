@@ -2,6 +2,7 @@ package com.sdu.servicedriveruser.remote;
 
 import com.sdu.internalcommon.dto.ResponseResult;
 import com.sdu.internalcommon.response.TerminalResponse;
+import com.sdu.internalcommon.response.TrackResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

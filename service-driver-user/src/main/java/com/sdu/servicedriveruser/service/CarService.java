@@ -3,6 +3,7 @@ package com.sdu.servicedriveruser.service;
 import com.sdu.internalcommon.dto.Car;
 import com.sdu.internalcommon.dto.ResponseResult;
 import com.sdu.internalcommon.response.TerminalResponse;
+import com.sdu.internalcommon.response.TrackResponse;
 import com.sdu.servicedriveruser.mapper.CarMapper;
 import com.sdu.servicedriveruser.remote.ServiceMapClient;
 import org.springframework.beans.factory.annotation.Autowired;

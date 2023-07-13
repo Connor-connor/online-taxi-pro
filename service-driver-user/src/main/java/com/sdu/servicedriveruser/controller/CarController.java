@@ -5,6 +5,7 @@ import com.sdu.internalcommon.dto.Car;
 import com.sdu.internalcommon.dto.ResponseResult;
 import com.sdu.servicedriveruser.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -24,6 +25,11 @@ public class CarController {
     @PostMapping("/car")
     public ResponseResult addCar(@RequestBody Car car){
         return carService.addCar(car);
+    }
+
+    @GetMapping("/car")
+    public ResponseResult<Car> getCarById(Long carId){
+        return carService.getCarById(carId);
     }
 
 }

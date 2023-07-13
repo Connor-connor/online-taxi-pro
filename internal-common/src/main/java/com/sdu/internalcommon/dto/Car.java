@@ -163,6 +163,11 @@ public class Car implements Serializable {
     private String fareType;
 
     /**
+     * 终端id
+     */
+    private String tid;
+
+    /**
      * 状态：0-有效，1-失效
      */
     private Integer state;

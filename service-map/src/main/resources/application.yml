@@ -15,3 +15,4 @@ spring:
 # 自定义的 key : value
 amap:
   key: 78462a297c925d75cbfbf4e58c8e1b95
+  sid: 975798 # 高德地图的服务id：（服务名称）网约车出行service

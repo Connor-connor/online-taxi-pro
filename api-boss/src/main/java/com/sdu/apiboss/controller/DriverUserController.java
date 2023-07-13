@@ -24,7 +24,7 @@ public class DriverUserController {
     private DriverUserService driverUserService;
 
     /**
-     * 添加驾驶员
+     * 添加司机
      * @param driverUser
      * @return
      */
@@ -34,7 +34,7 @@ public class DriverUserController {
     }
 
     /**
-     * 修改驾驶员信息
+     * 修改司机信息
      * @param driverUser
      * @return
      */

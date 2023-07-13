@@ -1,5 +1,7 @@
 package com.sdu.servicedriveruser.service;
 
+import com.sdu.internalcommon.constant.CommonStatusEnum;
+import com.sdu.internalcommon.constant.DriverCarConstants;
 import com.sdu.internalcommon.dto.DriverUser;
 import com.sdu.internalcommon.dto.ResponseResult;
 import com.sdu.servicedriveruser.mapper.DriverUserMapper;
@@ -8,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author LHP
@@ -41,6 +46,18 @@ public class DriverUserService {
 
         driverUserMapper.updateById(driverUser);
         return ResponseResult.success("");
+    }
+
+    public ResponseResult<DriverUser> getDriverUserByPhone(String driverPhone){
+        Map<String,Object> map = new HashMap<>();
+        map.put("driver_phone", driverPhone);
+        map.put("state", DriverCarConstants.DRIVER_STATE_VALID);
+        List<DriverUser> driverUsers = driverUserMapper.selectByMap(map);
+        if (driverUsers.isEmpty()){
+            return ResponseResult.fail(CommonStatusEnum.DRIVER_NOT_EXITST.getCode(),CommonStatusEnum.DRIVER_NOT_EXITST.getValue());
+        }
+        DriverUser driverUser = driverUsers.get(0);
+        return ResponseResult.success(driverUser);
     }
 
 }

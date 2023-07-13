@@ -8,18 +8,19 @@ package com.sdu.internalcommon.util;
 public class RedisPrefixUtils {
 
     // 乘客验证码的前缀
-    public static String verificationCodePrefix = "passenger-verification-code-";
+    public static String verificationCodePrefix = "verification-code-";
 
     // token的前缀
     public static String tokenPrefix = "token-";
 
     /**
      * 根据手机号生成redis中的key
-     * @param passengerPhone 乘客手机号
+     * @param phone 手机号
+     * @param identity 身份
      * @return
      */
-    public static String generateKeyByPhone(String passengerPhone) {
-        return verificationCodePrefix + passengerPhone;
+    public static String generateKeyByPhone(String phone, String identity) {
+        return verificationCodePrefix + identity + "-" + phone;
     }
 
     /**

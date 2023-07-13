@@ -40,6 +40,7 @@ public class PointService {
         pointRequest.setTrid(trid);
         pointRequest.setPoints(apiDriverPointRequest.getPoints());
 
+        
         return serviceMapClient.upload(pointRequest);
 
     }

@@ -65,6 +65,7 @@ public class PointClient {
         url.append("%5D");
 
         System.out.println("上传位置请求："+ url);
+//        ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity(url.toString(), null, String.class);
         ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity(URI.create(url.toString()), null, String.class);
         System.out.println("上传位置响应："+stringResponseEntity.getBody());
 

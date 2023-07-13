@@ -39,12 +39,12 @@ public class CarService {
         car.setTid(tid);
 
         // 获得此车辆的轨迹id：trid
-/*        ResponseResult<TrackResponse> trackResponseResponseResult = serviceMapClient.addTrack(tid);
+        ResponseResult<TrackResponse> trackResponseResponseResult = serviceMapClient.addTrack(tid);
         String trid = trackResponseResponseResult.getData().getTrid();
         String trname = trackResponseResponseResult.getData().getTrname();
 
         car.setTrid(trid);
-        car.setTrname(trname);*/
+        car.setTrname(trname);
 
         carMapper.updateById(car);
 

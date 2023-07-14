@@ -67,7 +67,7 @@ public class ForecastPriceService {
         queryMap.put("vehicle_type", "1");
         List<PriceRule> priceRules = priceRuleMapper.selectByMap(queryMap);
         if (priceRules.size() == 0) {
-            return ResponseResult.fail(CommonStatusEnum.PRICE_NOT_EXISTS.getCode(), CommonStatusEnum.PRICE_NOT_EXISTS.getValue());
+            return ResponseResult.fail(CommonStatusEnum.PRICE_RULE_EMPTY.getCode(), CommonStatusEnum.PRICE_RULE_EMPTY.getValue());
         }
         PriceRule priceRule = priceRules.get(0); // 计价规则
 

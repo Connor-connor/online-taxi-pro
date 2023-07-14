@@ -2,6 +2,8 @@ package com.sdu.serviceorder.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.sdu.internalcommon.constant.CommonStatusEnum;
+import com.sdu.internalcommon.constant.OrderConstants;
+import com.sdu.internalcommon.dto.OrderInfo;
 import com.sdu.internalcommon.dto.ResponseResult;
 import com.sdu.internalcommon.request.OrderRequest;
 import com.sdu.serviceorder.mapper.OrderInfoMapper;
@@ -51,11 +53,11 @@ public class OrderInfoService {
     public ResponseResult add(OrderRequest orderRequest) {
 
         // 测试当前城市是否有可用的司机
-        ResponseResult<Boolean> availableDriver = serviceDriverUserClient.isAvailableDriver(orderRequest.getAddress());
-        log.info("测试城市是否有司机结果："+availableDriver.getData());
-        if (!availableDriver.getData()){
-            return ResponseResult.fail(CommonStatusEnum.CITY_DRIVER_EMPTY.getCode(), CommonStatusEnum.CITY_DRIVER_EMPTY.getValue());
-        }
+//        ResponseResult<Boolean> availableDriver = serviceDriverUserClient.isAvailableDriver(orderRequest.getAddress());
+//        log.info("测试城市是否有司机结果："+availableDriver.getData());
+//        if (!availableDriver.getData()){
+//            return ResponseResult.fail(CommonStatusEnum.CITY_DRIVER_EMPTY.getCode(), CommonStatusEnum.CITY_DRIVER_EMPTY.getValue());
+//        }
 //
 //        // 需要判断计价规则的版本是否为最新
 //        PriceRuleIsNewRequest priceRuleIsNewRequest = new PriceRuleIsNewRequest();
@@ -81,21 +83,21 @@ public class OrderInfoService {
 //        if (isPassengerOrderGoingon(orderRequest.getPassengerId()) > 0){
 //            return ResponseResult.fail(CommonStatusEnum.ORDER_GOING_ON.getCode(),CommonStatusEnum.ORDER_GOING_ON.getValue());
 //        }
-//
-//        // 创建订单
-//        OrderInfo orderInfo = new OrderInfo();
-//
-//        BeanUtils.copyProperties(orderRequest,orderInfo);
-//
-//        orderInfo.setOrderStatus(OrderConstants.ORDER_START);
-//
-//        LocalDateTime now = LocalDateTime.now();
-//        orderInfo.setGmtCreate(now);
-//        orderInfo.setGmtModified(now);
-//
-//        orderInfoMapper.insert(orderInfo);
-//
-//        // 定时任务的处理
+
+        // 创建订单
+        OrderInfo orderInfo = new OrderInfo();
+
+        BeanUtils.copyProperties(orderRequest,orderInfo);
+
+        orderInfo.setOrderStatus(OrderConstants.ORDER_START);
+
+        LocalDateTime now = LocalDateTime.now();
+        orderInfo.setGmtCreate(now);
+        orderInfo.setGmtModified(now);
+
+        orderInfoMapper.insert(orderInfo);
+
+        // 定时任务的处理
 //        for (int i =0;i<6;i++){
 //            // 派单 dispatchRealTimeOrder
 //            int result = dispatchRealTimeOrder(orderInfo);
@@ -119,8 +121,8 @@ public class OrderInfoService {
 //
 //        }
 //
-//        return ResponseResult.success();
-//    }
+        return ResponseResult.success();
+    }
 //
 //    @Autowired
 //    ServiceMapClient serviceMapClient;

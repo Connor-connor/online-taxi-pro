@@ -17,19 +17,25 @@ public enum CommonStatusEnum {
         VERIFICATION_CODE_ERROR(1099, "验证码错误"), // 验证码错误：1000-1099
         TOKEN_ERROR(1199, "token错误"), // token错误：1100-1199
         USER_NOT_EXISTS(1299, "当前用户不存在"), // 用户不存在：1200-1299
-        PRICE_NOT_EXISTS(1399, "计价规则不存在"), // 计价规则不存在：1300-1399
 
-        /**
-         * 计价规则:1300-1399
-         */
-/*        PRICE_RULE_EMPTY(1300,"计价规则不存在"),
+
+
+
+
+        PRICE_RULE_EMPTY(1300,"计价规则不存在"), // 计价规则：1300-1399
 
         PRICE_RULE_EXISTS(1301,"计价规则已存在，不允许添加"),
 
         PRICE_RULE_NOT_EDIT(1302,"计价规则没有变化"),
 
-        PRICE_RULE_CHANGED(1303,"计价规则有变化"),*/
+        PRICE_RULE_CHANGED(1303,"计价规则有变化"),
+
+
+
         MAP_DISTRICT_ERROR(1499, "请求地图错误"), // 请求地图错误：1400-1499
+
+
+
 
         DRIVER_CAR_BIND_NOT_EXISTS(1500,"司机和车辆绑定关系不存在"), // 司机和车辆：1500-1599
 

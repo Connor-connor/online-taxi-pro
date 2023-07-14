@@ -13,16 +13,16 @@ import java.time.LocalDateTime;
 
 @Data
 public class OrderRequest {
-/*    *//**
+    /**
      * 订单ID
-     *//*
-    private Long orderId;
+     */
+//    private Long orderId;
 
     // 乘客ID
     private Long passengerId;
 
     // 乘客手机号
-    private String passengerPhone;*/
+    private String passengerPhone;
 
     // 下单行政区域
     private String address;
@@ -48,14 +48,12 @@ public class OrderRequest {
     private Integer encrypt;
     // 运价类型编码
     private String fareType;
-/*
     // 运价版本
     private Integer fareVersion;
 
     // 请求设备唯一码
-    private String deviceCode;
+//    private String deviceCode;
 
-    */
 /**
      * 司机去接乘客出发时间
      *//*

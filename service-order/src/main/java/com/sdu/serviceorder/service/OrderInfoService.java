@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.sdu.internalcommon.constant.CommonStatusEnum;
 import com.sdu.internalcommon.constant.OrderConstants;
 import com.sdu.internalcommon.dto.OrderInfo;
+import com.sdu.internalcommon.dto.PriceRule;
 import com.sdu.internalcommon.dto.ResponseResult;
 import com.sdu.internalcommon.request.OrderRequest;
 import com.sdu.internalcommon.request.PriceRuleIsNewRequest;
@@ -84,9 +85,9 @@ public class OrderInfoService {
         }
 
         // 判断：下单的城市和计价规则是否正常
-//        if(!isPriceRuleExists(orderRequest)){
-//            return ResponseResult.fail(CommonStatusEnum.CITY_SERVICE_NOT_SERVICE.getCode(),CommonStatusEnum.CITY_SERVICE_NOT_SERVICE.getValue());
-//        }
+        if(!isPriceRuleExists(orderRequest)){
+            return ResponseResult.fail(CommonStatusEnum.CITY_SERVICE_NOT_SERVICE.getCode(),CommonStatusEnum.CITY_SERVICE_NOT_SERVICE.getValue());
+        }
 
 
         // 判断乘客 是否有进行中的订单
@@ -297,27 +298,27 @@ public class OrderInfoService {
 //        return  result;
 //
 //    }
-//
-//    /**
-//     * 计价规则是否存在
-//     * @param orderRequest
-//     * @return
-//     */
-//    private boolean isPriceRuleExists(OrderRequest orderRequest){
-//        String fareType = orderRequest.getFareType();
-//        int index = fareType.indexOf("$");
-//        String cityCode = fareType.substring(0, index);
-//        String vehicleType = fareType.substring(index + 1);
-//
-//        PriceRule priceRule = new PriceRule();
-//        priceRule.setCityCode(cityCode);
-//        priceRule.setVehicleType(vehicleType);
-//
-//        ResponseResult<Boolean> booleanResponseResult = servicePriceClient.ifPriceExists(priceRule);
-//        return booleanResponseResult.getData();
-//
-//    }
-//
+
+    /**
+     * 计价规则是否存在
+     * @param orderRequest
+     * @return
+     */
+    private boolean isPriceRuleExists(OrderRequest orderRequest){
+        String fareType = orderRequest.getFareType();
+        int index = fareType.indexOf("$");
+        String cityCode = fareType.substring(0, index);
+        String vehicleType = fareType.substring(index + 1);
+
+        PriceRule priceRule = new PriceRule();
+        priceRule.setCityCode(cityCode);
+        priceRule.setVehicleType(vehicleType);
+
+        ResponseResult<Boolean> booleanResponseResult = servicePriceClient.ifPriceExists(priceRule);
+        return booleanResponseResult.getData();
+
+    }
+
     /**
      * 是否是黑名单
      * @param orderRequest

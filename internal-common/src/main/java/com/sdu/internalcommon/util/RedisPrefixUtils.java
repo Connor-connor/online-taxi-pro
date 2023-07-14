@@ -13,6 +13,9 @@ public class RedisPrefixUtils {
     // token的前缀
     public static String tokenPrefix = "token-";
 
+    // 黑名单设备号
+    public static String blackDeviceCodePrefix = "black-device-";
+
     /**
      * 根据手机号生成redis中的key
      * @param phone 手机号

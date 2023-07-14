@@ -52,7 +52,7 @@ public class OrderRequest {
     private Integer fareVersion;
 
     // 请求设备唯一码
-//    private String deviceCode;
+    private String deviceCode;
 
 /**
      * 司机去接乘客出发时间

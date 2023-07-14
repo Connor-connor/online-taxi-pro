@@ -12,6 +12,12 @@ spring:
         server-addr: 127.0.0.1:8848
   application:
     name: service-order
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    password: Lz826826
+
 # \u81EA\u5B9A\u4E49\u7684 key : value
 #amap:
 #  key: 78462a297c925d75cbfbf4e58c8e1b95

@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 @FeignClient("service-price")
 public interface ServicePriceClient {
 
+//    @PostMapping("/price-rule/is-new")
+//    public ResponseResult<Boolean> isNew(@RequestParam String fareType, @RequestParam Integer fareVersion);
+
     @PostMapping("/price-rule/is-new")
     public ResponseResult<Boolean> isNew(@RequestBody PriceRuleIsNewRequest priceRuleIsNewRequest);
 

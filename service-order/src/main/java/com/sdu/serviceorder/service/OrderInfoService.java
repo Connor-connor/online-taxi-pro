@@ -6,7 +6,9 @@ import com.sdu.internalcommon.constant.OrderConstants;
 import com.sdu.internalcommon.dto.OrderInfo;
 import com.sdu.internalcommon.dto.ResponseResult;
 import com.sdu.internalcommon.request.OrderRequest;
+import com.sdu.internalcommon.request.PriceRuleIsNewRequest;
 import com.sdu.serviceorder.mapper.OrderInfoMapper;
+import com.sdu.serviceorder.remote.ServicePriceClient;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -34,9 +36,9 @@ public class OrderInfoService {
 
     @Autowired
     OrderInfoMapper orderInfoMapper;
-//
-//    @Autowired
-//    ServicePriceClient servicePriceClient;
+
+    @Autowired
+    ServicePriceClient servicePriceClient;
 //
 //    @Autowired
 //    ServiceDriverUserClient serviceDriverUserClient;
@@ -59,14 +61,14 @@ public class OrderInfoService {
 //            return ResponseResult.fail(CommonStatusEnum.CITY_DRIVER_EMPTY.getCode(), CommonStatusEnum.CITY_DRIVER_EMPTY.getValue());
 //        }
 //
-//        // 需要判断计价规则的版本是否为最新
-//        PriceRuleIsNewRequest priceRuleIsNewRequest = new PriceRuleIsNewRequest();
-//        priceRuleIsNewRequest.setFareType(orderRequest.getFareType());
-//        priceRuleIsNewRequest.setFareVersion(orderRequest.getFareVersion());
-//        ResponseResult<Boolean> aNew = servicePriceClient.isNew(priceRuleIsNewRequest);
-//        if (!(aNew.getData())){
-//            return ResponseResult.fail(CommonStatusEnum.PRICE_RULE_CHANGED.getCode(),CommonStatusEnum.PRICE_RULE_CHANGED.getValue());
-//        }
+        // 需要判断计价规则的版本是否为最新
+        PriceRuleIsNewRequest priceRuleIsNewRequest = new PriceRuleIsNewRequest();
+        priceRuleIsNewRequest.setFareType(orderRequest.getFareType());
+        priceRuleIsNewRequest.setFareVersion(orderRequest.getFareVersion());
+        ResponseResult<Boolean> aNew = servicePriceClient.isNew(priceRuleIsNewRequest);
+        if (!(aNew.getData())){
+            return ResponseResult.fail(CommonStatusEnum.PRICE_RULE_CHANGED.getCode(),CommonStatusEnum.PRICE_RULE_CHANGED.getValue());
+        }
 //
 //        // 需要判断 下单的设备是否是 黑名单设备
 ////        if (isBlackDevice(orderRequest)) {

@@ -21,15 +21,13 @@ public class PriceRuleController {
 
     @PostMapping("/add")
     public ResponseResult add(@RequestBody PriceRule priceRule){
-
         return priceRuleService.add(priceRule);
     }
-//
-//    @PostMapping("/edit")
-//    public ResponseResult edit(@RequestBody PriceRule priceRule){
-//
-//        return priceRuleService.edit(priceRule);
-//    }
+
+    @PostMapping("/edit")
+    public ResponseResult edit(@RequestBody PriceRule priceRule){
+        return priceRuleService.edit(priceRule);
+    }
 //
 //    /**
 //     * 查询最新的计价规则

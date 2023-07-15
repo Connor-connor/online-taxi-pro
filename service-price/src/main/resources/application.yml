@@ -13,3 +13,12 @@ spring:
   application:
     name: service-price
 
+# 日志打印
+logging:
+  level:
+    com:
+      baomidou:
+        mybatisplus: debug
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

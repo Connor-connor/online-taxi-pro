@@ -1,8 +1,13 @@
 package com.sdu.apipassenger.controller;
 
 import com.sdu.apipassenger.service.OrderService;
+import com.sdu.internalcommon.constant.CommonStatusEnum;
+import com.sdu.internalcommon.constant.IdentityConstants;
+import com.sdu.internalcommon.dto.OrderInfo;
 import com.sdu.internalcommon.dto.ResponseResult;
+import com.sdu.internalcommon.dto.TokenResult;
 import com.sdu.internalcommon.request.OrderRequest;
+import com.sdu.internalcommon.util.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +40,7 @@ public class OrderController {
      * @param orderId
      * @return
      */
-/*    @PostMapping("/cancel")
+    @PostMapping("/cancel")
     public ResponseResult cancel(@RequestParam Long orderId){
         return orderService.cancel(orderId);
     }
@@ -56,5 +61,5 @@ public class OrderController {
         String phone = tokenResult.getPhone();
 
         return orderService.currentOrder(phone,IdentityConstants.PASSENGER_IDENTITY);
-    }*/
+    }
 }

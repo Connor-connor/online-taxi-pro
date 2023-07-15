@@ -7,10 +7,10 @@ package com.sdu.internalcommon.util;
  */
 public class SsePrefixUtils {
 
-//    public static  final String sperator = "$";
-//
-//    public  static String generatorSseKey(Long userId , String identity){
-//        return userId+sperator+identity;
-//    }
+    public static  final String separator = "$";
+
+    public  static String generatorSseKey(Long userId , String identity){
+        return userId+ separator +identity;
+    }
 
 }

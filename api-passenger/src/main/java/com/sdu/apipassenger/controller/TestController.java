@@ -1,5 +1,6 @@
 package com.sdu.apipassenger.controller;
 
+import com.sdu.apipassenger.remote.ServiceOrderClient;
 import com.sdu.internalcommon.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,18 +38,18 @@ public class TestController {
         return ResponseResult.success("no auth test");
     }
 
-/*    @Autowired
+    @Autowired
     ServiceOrderClient serviceOrderClient;
 
-    *//**
+    /**
      * 测试派单逻辑
      * @param orderId
      * @return
-     *//*
+     */
     @GetMapping("/test-real-time-order/{orderId}")
     public String dispatchRealTimeOrder(@PathVariable("orderId") long orderId){
         System.out.println("并发测试：api-passenger："+orderId);
         serviceOrderClient.dispatchRealTimeOrder(orderId);
         return "test-real-time-order   success";
-    }*/
+    }
 }

@@ -26,10 +26,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 // 拦截的路径（所有请求）
                 .addPathPatterns("/**")
                 // 不拦截的路径
-                .excludePathPatterns("/noauth");
-//                .excludePathPatterns("/verification-code")
-//                .excludePathPatterns("/verification-code-check")
-//                .excludePathPatterns("/token-refresh");
+                .excludePathPatterns("/noauth")
+                .excludePathPatterns("/verification-code")
+                .excludePathPatterns("/verification-code-check");
     }
 
 

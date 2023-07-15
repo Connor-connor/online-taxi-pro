@@ -9,3 +9,5 @@
 | api-boss               | 8087 |
 | api-driver             | 8088 |
 | service-order          | 8089 |
+| service-sse-push       | 9000 |
+| test-alipay            | 9001 |

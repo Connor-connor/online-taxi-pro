@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>com.sdu</groupId>
-        <artifactId>online-taxi</artifactId>
+        <artifactId>online-taxi-back-end</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -24,6 +24,12 @@
 
 
     <dependencies>
+        <dependency>
+            <groupId>com.sdu</groupId>
+            <artifactId>internal-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

@@ -10,7 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 public class ApiBossApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ApiBossApplication.class, args);
+        SpringApplication.run(ApiBossApplication.class);
     }
 
 }

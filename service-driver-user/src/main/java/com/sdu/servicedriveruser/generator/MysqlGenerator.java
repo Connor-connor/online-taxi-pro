@@ -17,10 +17,10 @@ public class MysqlGenerator {
 
         FastAutoGenerator.create("jdbc:mysql://localhost:3306/service-driver-user?characterEncoding=utf-8&serverTimezone=GMT%2B8", "root","123456")
                 .globalConfig(builder -> {
-                    builder.author("李浩鹏").fileOverride().outputDir("E:\\Project\\CourseDesign\\online-taxi\\service-driver-user\\src\\main\\java");
+                    builder.author("李浩鹏").fileOverride().outputDir("E:\\Project\\CourseDesign\\online-taxi-back-end\\service-driver-user\\src\\main\\java");
                 })
                 .packageConfig(builder -> {
-                    builder.parent("com.sdu.servicedriveruser").pathInfo(Collections.singletonMap(OutputFile.mapperXml, "E:\\Project\\CourseDesign\\online-taxi\\service-driver-user\\src\\main\\java\\com\\sdu\\servicedriveruser\\mapper"));
+                    builder.parent("com.sdu.servicedriveruser").pathInfo(Collections.singletonMap(OutputFile.mapperXml, "E:\\Project\\CourseDesign\\online-taxi-back-end\\service-driver-user\\src\\main\\java\\com\\sdu\\servicedriveruser\\mapper"));
                 })
                 .strategyConfig(builder -> {
                     builder.addInclude("driver_car_binding_relationship");

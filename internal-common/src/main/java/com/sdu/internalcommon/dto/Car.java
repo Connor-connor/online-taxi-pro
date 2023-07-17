@@ -55,7 +55,7 @@ public class Car implements Serializable {
     /**
      * 车辆所有人
      */
-    private String owerName;
+    private String ownerName;
 
     /**
      * 车身颜色：1-白色，2-黑色

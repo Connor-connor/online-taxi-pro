@@ -86,7 +86,7 @@ public class DriverUserService {
         // 车辆和司机绑定关系查询
         QueryWrapper<DriverCarBindingRelationship> driverCarBindingRelationshipQueryWrapper = new QueryWrapper<>();
         driverCarBindingRelationshipQueryWrapper.eq("car_id",carId);
-        driverCarBindingRelationshipQueryWrapper.eq("bind_state",DriverCarConstants.DRIVER_CAR_BIND);
+        driverCarBindingRelationshipQueryWrapper.eq("binding_state",DriverCarConstants.DRIVER_CAR_BIND);
 
         DriverCarBindingRelationship driverCarBindingRelationship = driverCarBindingRelationshipMapper.selectOne(driverCarBindingRelationshipQueryWrapper);
         Long driverId = driverCarBindingRelationship.getDriverId();

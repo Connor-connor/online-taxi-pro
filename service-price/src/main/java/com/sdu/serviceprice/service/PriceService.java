@@ -21,10 +21,8 @@ import java.util.Map;
 
 /**
  * @author LHP
- * @date 2023-07-12 0:46
- * @description
+ * @description 价格服务类
  */
-
 @Service
 @Slf4j
 public class PriceService {
@@ -37,30 +35,29 @@ public class PriceService {
 
     /**
      * 根据出发地和目的地经纬度，预估价格
-     * @param depLongitude
-     * @param depLatitude
-     * @param destLongitude
-     * @param destLatitude
-     * @return
+     * @param depLongitude 出发地经度
+     * @param depLatitude 出发地纬度
+     * @param destLongitude 目的地经度
+     * @param destLatitude 目的地纬度
+     * @return 预估价格
      */
     public ResponseResult forecastPrice(String depLongitude, String depLatitude, String destLongitude, String destLatitude, String cityCode, String vehicleType) {
 
-        log.info("出发地经度：" + depLongitude);
-        log.info("出发地纬度：" + depLatitude);
-        log.info("目的地经度：" + destLongitude);
-        log.info("目的地纬度：" + destLatitude);
-
-        log.info("调用地图服务，查询距离和时长");
         ForecastPriceDTO forecastPriceDTO = new ForecastPriceDTO();
         forecastPriceDTO.setDepLongitude(depLongitude);
         forecastPriceDTO.setDepLatitude(depLatitude);
         forecastPriceDTO.setDestLongitude(destLongitude);
         forecastPriceDTO.setDestLatitude(destLatitude);
+
         ResponseResult<DirectionResponse> direction = serviceMapClient.direction(forecastPriceDTO);
-        Integer distance = direction.getData().getDistance(); // 距离
-        Integer duration = direction.getData().getDuration(); // 时长
+
+        // 距离
+        Integer distance = direction.getData().getDistance();
+        // 时长
+        Integer duration = direction.getData().getDuration();
         log.info("距离：" + distance + "，时长：" + duration);
 
+        // 读取计价规则
         log.info("读取计价规则");
         Map<String, Object> queryMap = new HashMap<>();
         queryMap.put("city_code", cityCode);
@@ -77,6 +74,7 @@ public class PriceService {
         }
         PriceRule priceRule = priceRules.get(0); // 计价规则
 
+        // 根据距离、时长和计价规则，计算价格
         log.info("根据距离、时长和计价规则，计算价格");
         double price = getPrice(distance, duration, priceRule);
 
@@ -128,6 +126,7 @@ public class PriceService {
     private double getPrice(Integer distance, Integer duration, PriceRule priceRule) {
         double price = 0;
 
+        // TODO: 再看看这里的计算逻辑
         // 起步价
         double startFare = priceRule.getStartFare();
         price = BigDecimalUtils.add(price, startFare);

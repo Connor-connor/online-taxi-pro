@@ -12,10 +12,8 @@ import java.util.List;
 
 /**
  * @author LHP
- * @date 2023-07-14 22:45
- * @description
+ * @description 调用远程service-map服务
  */
-
 @FeignClient("service-map")
 public interface ServiceMapClient {
 

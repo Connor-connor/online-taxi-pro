@@ -7,10 +7,8 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author LHP
- * @date 2023-07-12 18:18
- * @description
+ * @description 司机用户mapper
  */
-
 @Repository
 public interface DriverUserMapper extends BaseMapper<DriverUser> {
 

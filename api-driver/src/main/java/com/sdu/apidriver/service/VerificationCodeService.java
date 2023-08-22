@@ -22,10 +22,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author LHP
- * @date 2023-07-13 9:00
- * @description
+ * @description 验证码业务类
  */
-
 @Service
 @Slf4j
 public class VerificationCodeService {
@@ -41,6 +39,7 @@ public class VerificationCodeService {
     StringRedisTemplate stringRedisTemplate;
 
     public ResponseResult checkAndSendVerificationCode(String driverPhone) {
+
         // 查询 service-driver-user，该手机号的司机是否存在
         ResponseResult<DriverUserExistsResponse> driverUserExistsResponseResponseResult = serviceDriverUserClient.checkDriver(driverPhone);
         DriverUserExistsResponse data = driverUserExistsResponseResponseResult.getData();
@@ -56,12 +55,12 @@ public class VerificationCodeService {
         int numberCode = numberCodeResponse.getNumberCode();
         log.info("验证码" + numberCode);
 
-        // 调用第三方发生验证码,第三方：阿里短信服务，腾讯，华信，容联
-
-
         // 存入redis，1：key，2：存入value
         String key = RedisPrefixUtils.generateKeyByPhone(driverPhone, IdentityConstants.DRIVER_IDENTITY);
         stringRedisTemplate.opsForValue().set(key, numberCode + "", 2, TimeUnit.MINUTES);
+
+        // 调用第三方发生验证码,第三方：阿里短信服务，腾讯，华信，容联
+        // TODO: 先后？
 
         return ResponseResult.success("");
     }
@@ -69,18 +68,16 @@ public class VerificationCodeService {
 
     /**
      * 校验验证码
-     *
-     * @param driverPhone      手机号
+     * @param driverPhone 手机号
      * @param verificationCode 验证码
      * @return
      */
     public ResponseResult checkCode(String driverPhone, String verificationCode) {
-        // 根据手机号，去redis读取验证码
-        // 生成key
+        // 去redis读取验证码
+        // 根据手机号，生成key
         String key = RedisPrefixUtils.generateKeyByPhone(driverPhone, IdentityConstants.DRIVER_IDENTITY);
         // 根据key获取value
         String codeRedis = stringRedisTemplate.opsForValue().get(key);
-        System.out.println("redis中的value：" + codeRedis);
 
         // 校验验证码
         if (StringUtils.isBlank(codeRedis)) {

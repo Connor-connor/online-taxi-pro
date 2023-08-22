@@ -20,18 +20,20 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author LHP
- * @date 2023-07-10 1:26
  * @description 验证码服务类
  */
-
 @Service
 public class VerificationCodeService {
 
-    // 远程调用service-verificationcode服务
+    /**
+     * 远程调用service-verificationcode服务
+     */
     @Autowired
     private ServiceVerificationcodeClient serviceVerificationcodeClient;
 
-    // 远程调用service-passenger-user服务
+    /**
+     * 远程调用service-passenger-user服务
+     */
     @Autowired
     private ServicePassengerUserClient servicePassengerUserClient;
 
@@ -44,22 +46,19 @@ public class VerificationCodeService {
      * @return
      */
     public ResponseResult generatorCode(String passengerPhone) {
+
         // 调用（远程）验证码服务，获取验证码
-        // System.out.println("调用（远程）验证码服务，获取验证码");
         ResponseResult<NumberCodeResponse> numberCodeResponse = serviceVerificationcodeClient.getNumberCode(6);
         int numberCode = numberCodeResponse.getData().getNumberCode();
 
-        // System.out.println("remote number code: " + numberCode);
-
-        // 存入redis
-        // System.out.println("存入redis");
-        // key，value，过期时间
-        // key：passenger-verification-code-手机号
+        // 存入redis：
+        // key的格式：verification-code-身份代码-手机号
         String key = RedisPrefixUtils.generateKeyByPhone(passengerPhone, IdentityConstants.PASSENGER_IDENTITY);
-        // 存入redis
+        // key，value，过期时间
         stringRedisTemplate.opsForValue().set(key, numberCode + "", 2, TimeUnit.MINUTES);
 
         // 通过短信服务商，将对应的验证码发送到手机上，阿里短信服务，腾讯短信通，华信，容联
+        // TODO: 未完成
 
         // 返回值
         return ResponseResult.success("");
@@ -72,19 +71,17 @@ public class VerificationCodeService {
      * @return
      */
     public ResponseResult checkCode(String passengerPhone, String verificationCode) {
-        // 根据手机号，去redis中取出验证码
-        // 生成redis中的key
+
+        // 去redis中取出验证码
+        // 根据手机号和身份，生成redis中的key
         String key = RedisPrefixUtils.generateKeyByPhone(passengerPhone, IdentityConstants.PASSENGER_IDENTITY);
         // 根据key，去redis中取value
         String codeRedis = stringRedisTemplate.opsForValue().get(key);
-        System.out.println("redis中的value: " + codeRedis);
-        System.out.println("传入的验证码: " + verificationCode);
 
         // 校验验证码
         // 如果redis中的验证码为空，或者与传入的验证码不一致，返回错误
         if (StringUtils.isBlank(codeRedis)) {
             return ResponseResult.fail(CommonStatusEnum.VERIFICATION_CODE_ERROR.getCode(), CommonStatusEnum.VERIFICATION_CODE_ERROR.getValue());
-
         }
         if (!verificationCode.trim().equals(codeRedis.trim())) {
             return ResponseResult.fail(CommonStatusEnum.VERIFICATION_CODE_ERROR.getCode(), CommonStatusEnum.VERIFICATION_CODE_ERROR.getValue());
@@ -98,8 +95,6 @@ public class VerificationCodeService {
         // 颁发令牌
         String accessToken = JwtUtils.generateToken(passengerPhone, IdentityConstants.PASSENGER_IDENTITY, TokenConstants.ACCESS_TOKEN_TYPE);
         String refreshToken = JwtUtils.generateToken(passengerPhone, IdentityConstants.PASSENGER_IDENTITY, TokenConstants.REFRESH_TOKEN_TYPE);
-
-
 
         // 将token存入redis
         String accessTokenKey = RedisPrefixUtils.generateTokenKey(passengerPhone, IdentityConstants.PASSENGER_IDENTITY, TokenConstants.ACCESS_TOKEN_TYPE);

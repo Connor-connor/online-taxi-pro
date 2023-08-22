@@ -9,13 +9,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @author LHP
- * @date 2023-07-10 9:37
- * @description 远程调用service-verificationcode服务
+ * @description 远程调用验证码服务
  */
-
 @FeignClient("service-verificationcode") // 指定服务名
 public interface ServiceVerificationcodeClient {
 
+    /**
+     * @param size 验证码位数
+     * @return 验证码
+     */
     @RequestMapping(method = RequestMethod.GET, value = "/numberCode/{size}")
     ResponseResult<NumberCodeResponse> getNumberCode(@PathVariable("size") int size);
 

@@ -6,10 +6,8 @@ import lombok.experimental.Accessors;
 
 /**
  * @author LHP
- * @date 2023-07-10 8:53
- * @description 通用的响应对象
+ * @description 通用响应对象类
  */
-
 @Data
 @Accessors(chain = true) // 链式调用，如：new ResponseResult().setCode().setMessage().setData()
 public class ResponseResult<T> {

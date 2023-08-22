@@ -10,10 +10,8 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author LHP
- * @date 2023-07-14 9:27
- * @description
+ * @description 订单service
  */
-
 @Service
 public class OrderService {
 
@@ -32,7 +30,6 @@ public class OrderService {
     public ResponseResult cancel(Long orderId){
         return serviceOrderClient.cancel(orderId, IdentityConstants.PASSENGER_IDENTITY);
     }
-
 
     public ResponseResult<OrderInfo> detail(Long orderId){
         return serviceOrderClient.detail(orderId);

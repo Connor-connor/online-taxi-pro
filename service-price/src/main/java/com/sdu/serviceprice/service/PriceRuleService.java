@@ -12,10 +12,8 @@ import java.util.List;
 
 /**
  * @author LHP
- * @date 2023-07-14 10:54
- * @description
+ * @description 计价规则service
  */
-
 @Service
 public class PriceRuleService {
 
@@ -114,7 +112,6 @@ public class PriceRuleService {
         ResponseResult<PriceRule> newestVersionPriceRule = getNewestVersion(fareType);
         if (newestVersionPriceRule.getCode() == CommonStatusEnum.PRICE_RULE_EMPTY.getCode()){
             return ResponseResult.fail(CommonStatusEnum.PRICE_RULE_EMPTY.getCode(),CommonStatusEnum.PRICE_RULE_EMPTY.getValue());
-//            return ResponseResult.success(false);
         }
 
         PriceRule priceRule = newestVersionPriceRule.getData();

@@ -20,10 +20,8 @@ import java.util.Map;
 
 /**
  * @author LHP
- * @date 2023-07-12 18:21
- * @description
+ * @description 司机用户业务类
  */
-
 @Service
 public class DriverUserService {
 
@@ -41,11 +39,18 @@ public class DriverUserService {
     }
 
 
+    /**
+     * 添加司机
+     * @param driverUser 司机信息
+     * @return 响应结果
+     */
     public ResponseResult addDriverUser(DriverUser driverUser){
+
         LocalDateTime now = LocalDateTime.now();
         driverUser.setGmtCreate(now);
         driverUser.setGmtModified(now);
 
+        // TODO: 是否要加上判断创建成功与否
         driverUserMapper.insert(driverUser);
 
         // 初始化 司机工作状态表
@@ -54,6 +59,7 @@ public class DriverUserService {
         driverUserWorkStatus.setWorkStatus(DriverCarConstants.DRIVER_WORK_STATUS_STOP);
         driverUserWorkStatus.setGmtModified(now);
         driverUserWorkStatus.setGmtCreate(now);
+        // TODO: 是否要加上判断创建成功与否
         driverUserWorkStatusMapper.insert(driverUserWorkStatus);
 
         return ResponseResult.success("");
@@ -71,6 +77,7 @@ public class DriverUserService {
         Map<String,Object> map = new HashMap<>();
         map.put("driver_phone", driverPhone);
         map.put("state", DriverCarConstants.DRIVER_STATE_VALID);
+        // TODO: 为什么不用selectOne
         List<DriverUser> driverUsers = driverUserMapper.selectByMap(map);
         if (driverUsers.isEmpty()){
             return ResponseResult.fail(CommonStatusEnum.DRIVER_NOT_EXITST.getCode(),CommonStatusEnum.DRIVER_NOT_EXITST.getValue());
@@ -98,7 +105,6 @@ public class DriverUserService {
         DriverUserWorkStatus driverUserWorkStatus = driverUserWorkStatusMapper.selectOne(driverUserWorkStatusQueryWrapper);
         if (null == driverUserWorkStatus){
             return ResponseResult.fail(CommonStatusEnum.AVAILABLE_DRIVER_EMPTY.getCode(),CommonStatusEnum.AVAILABLE_DRIVER_EMPTY.getValue());
-
         }else {
             // 查询司机信息
             QueryWrapper<DriverUser> driverUserQueryWrapper = new QueryWrapper<>();
@@ -108,7 +114,6 @@ public class DriverUserService {
             QueryWrapper<Car> carQueryWrapper = new QueryWrapper<>();
             carQueryWrapper.eq("id",carId);
             Car car = carMapper.selectOne(carQueryWrapper);
-
 
             OrderDriverResponse orderDriverResponse = new OrderDriverResponse();
             orderDriverResponse.setCarId(carId);

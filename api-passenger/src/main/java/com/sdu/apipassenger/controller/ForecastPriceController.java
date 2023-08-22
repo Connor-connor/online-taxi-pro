@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author LHP
- * @date 2023-07-11 23:59
- * @description
+ * @description 预估价格控制类
  */
-
 @RestController
 public class ForecastPriceController {
 
@@ -32,6 +30,7 @@ public class ForecastPriceController {
         String cityCode = forecastPriceDTO.getCityCode();
         String vehicleType = forecastPriceDTO.getVehicleType();
 
+        // TODO: 优化？为什么不直接传 forecastPriceDTO？时序图也要改？
         return forecastPriceService.forecastPrice(depLongitude, depLatitude, destLongitude, destLatitude, cityCode, vehicleType);
     }
 }

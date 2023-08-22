@@ -17,46 +17,57 @@ import java.util.Map;
 
 /**
  * @author LHP
- * @date 2023-07-11 1:20
  * @description jwt工具类
  */
 public class JwtUtils {
 
-    // 盐
+    /**
+     * 盐
+     */
     private static final String SIGN = "!sop@WDT^&*()_+";
 
+    /**
+     * 手机号
+     */
     private static final String JWT_KEY_PHONE = "phone";
 
-    // 1-乘客，2-司机
+    /**
+     * 1-乘客，2-司机
+     */
     private static final String JWT_KEY_IDENTITY = "identity";
 
-    // token类型
+    /**
+     * token类型：access_token，refresh_token
+     */
     private static final String JWT_TOKEN_TYPE = "tokenType";
 
+    /**
+     * token生成时间
+     */
     private static final String JWT_TOKEN_TIME = "tokenTime";
 
-    // 生成token
+    /**
+     * 生成token
+     * @param phone 手机号
+     * @param identity 1-乘客，2-司机
+     * @param tokenType token类型：access_token，refresh_token
+     * @return token
+     */
     public static String generateToken(String phone, String identity, String tokenType) {
         Map<String, String> map = new HashMap<>();
         map.put(JWT_KEY_PHONE, phone);
         map.put(JWT_KEY_IDENTITY, identity);
         map.put(JWT_TOKEN_TYPE, tokenType);
-        map.put(JWT_TOKEN_TIME, Calendar.getInstance().getTime().toString()); // 防止每次生成的token一样
+        // 防止每次生成的token一样
+        map.put(JWT_TOKEN_TIME, Calendar.getInstance().getTime().toString());
 
         JWTCreator.Builder builder = JWT.create();
 
         // 整合map
-        map.forEach((k, v) -> {
-            builder.withClaim(k, v);
-        });
+        map.forEach(builder::withClaim);
 
-        // 整合有效期
-        // builder.withExpiresAt(date);
-
-        // 加盐，生成token
-        String sign = builder.sign(Algorithm.HMAC256(SIGN));
-
-        return sign;
+        // 加盐，生成token，并返回
+        return builder.sign(Algorithm.HMAC256(SIGN));
     }
 
     // 解析token

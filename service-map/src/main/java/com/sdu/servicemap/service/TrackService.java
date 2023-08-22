@@ -8,18 +8,20 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author LHP
- * @date 2023-07-13 23:28
- * @description
+ * @description 轨迹服务类
  */
-
 @Service
 public class TrackService {
 
     @Autowired
     TrackClient trackClient;
 
+    /**
+     * 添加轨迹
+     * @param tid 终端id
+     * @return 响应结果
+     */
     public ResponseResult<TrackResponse> add(String tid){
-
         return trackClient.add(tid);
     }
 }

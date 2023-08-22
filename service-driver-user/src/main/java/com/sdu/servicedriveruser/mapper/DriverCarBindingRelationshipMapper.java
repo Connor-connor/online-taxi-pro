@@ -5,14 +5,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 
 /**
- * <p>
- *  Mapper 接口
- * </p>
- *
- * @author 李浩鹏
- * @since 2023-07-13
+ * @author LHP
+ * @description 司机车辆绑定关系Mapper
  */
-
 @Repository
 public interface DriverCarBindingRelationshipMapper extends BaseMapper<DriverCarBindingRelationship> {
 

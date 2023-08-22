@@ -17,10 +17,8 @@ import java.util.List;
 
 /**
  * @author LHP
- * @date 2023-07-13 22:49
- * @description
+ * @description 终端客户端
  */
-
 @Service
 public class TerminalClient {
 
@@ -119,8 +117,6 @@ public class TerminalClient {
 
             terminalResponseList.add(terminalResponse);
         }
-
-
 
         return ResponseResult.success(terminalResponseList);
     }

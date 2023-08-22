@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author LHP
- * @date 2023-07-10 1:12
- * @description 验证码控制器
+ * @description 验证码控制类
  */
-
 @RestController
 public class VerificationCodeController {
 
@@ -26,18 +24,16 @@ public class VerificationCodeController {
 
         // 接收参数（获取手机号）
         String passengerPhone = verificationCodeDTO.getPassengerPhone();
-        // System.out.println("接收到的手机号参数：" + passengerPhone);
 
         return verificationCodeService.generatorCode(passengerPhone);
     }
 
     @PostMapping("/verification-code-check")
     public ResponseResult checkVerificationCode(@RequestBody VerificationCodeDTO verificationCodeDTO) {
-        // 接收参数（获取手机号）
+
+        // 接收参数（获取手机号和验证码）
         String passengerPhone = verificationCodeDTO.getPassengerPhone();
         String verificationCode = verificationCodeDTO.getVerificationCode();
-
-        System.out.println("手机号：" + passengerPhone + "验证码：" + verificationCode);
 
         return verificationCodeService.checkCode(passengerPhone, verificationCode);
     }

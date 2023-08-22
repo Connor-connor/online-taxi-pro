@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * @author LHP
- * @date 2023-07-14 10:55
- * @description
+ * @description 计价规则controller
  */
-
 @RestController
 @RequestMapping("/price-rule")
 public class PriceRuleController {
@@ -47,7 +45,6 @@ public class PriceRuleController {
      */
     @PostMapping("/is-new")
     public ResponseResult<Boolean> isNew(@RequestBody PriceRuleIsNewRequest priceRuleIsNewRequest){
-
         return priceRuleService.isNew(priceRuleIsNewRequest.getFareType(),priceRuleIsNewRequest.getFareVersion());
     }
 

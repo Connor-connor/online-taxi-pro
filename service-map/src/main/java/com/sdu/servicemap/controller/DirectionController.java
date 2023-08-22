@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author LHP
- * @date 2023-07-12 1:25
- * @description
+ * @description 预估价格控制类
  */
-
 @RestController
 @RequestMapping("/direction")
 public class DirectionController {

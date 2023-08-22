@@ -7,10 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * @author LHP
- * @date 2023-07-14 22:47
- * @description
+ * @description 调用远程service-sse-push服务
  */
-
 @FeignClient("service-sse-push")
 public interface ServiceSsePushClient {
 

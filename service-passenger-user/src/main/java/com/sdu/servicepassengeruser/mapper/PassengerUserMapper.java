@@ -6,10 +6,8 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author LHP
- * @date 2023-07-11 0:16
- * @description
+ * @description 乘客用户mapper
  */
-
 @Repository
 public interface PassengerUserMapper extends BaseMapper<PassengerUser> {
 }

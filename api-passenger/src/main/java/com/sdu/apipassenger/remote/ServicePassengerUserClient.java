@@ -11,16 +11,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @author LHP
- * @date 2023-07-11 0:42
  * @description 远程调用service-passenger-user服务
  */
-
 @FeignClient(name = "service-passenger-user")
 public interface ServicePassengerUserClient {
 
+    /**
+     * @param verificationCodeDTO 验证码响应类，里面有用户手机号
+     * @return 响应结果
+     */
     @RequestMapping(method = RequestMethod.POST, value = "/user")
     public ResponseResult loginOrRegister(@RequestBody VerificationCodeDTO verificationCodeDTO);
 
+    /**
+     * @param phone 用户手机号
+     * @return 响应结果
+     */
     @RequestMapping(method = RequestMethod.GET, value = "/user/{phone}") // 防止feign的post转get的bug
     public ResponseResult<PassengerUser> getUserByPhone(@PathVariable("phone") String phone);
 

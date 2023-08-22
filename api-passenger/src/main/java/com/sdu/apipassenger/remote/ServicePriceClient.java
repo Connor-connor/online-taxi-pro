@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @author LHP
- * @date 2023-07-12 10:51
- * @description
+ * @description 远程调用service-price服务
  */
 @FeignClient("service-price")
 public interface ServicePriceClient {
+
+    /**
+     * @param forecastPriceDTO 预估价格请求对象
+     * @return 响应对象
+     */
     @RequestMapping(method = RequestMethod.POST, value = "/forecast-price")
     public ResponseResult<ForecastPriceResponse> forecast(@RequestBody ForecastPriceDTO forecastPriceDTO);
 }

@@ -60,7 +60,6 @@ public class TrackClient {
         trackResponse.setTrid(trid);
         trackResponse.setTrname(trname);
 
-
         return ResponseResult.success(trackResponse);
     }
 }

@@ -10,10 +10,8 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author LHP
- * @date 2023-07-12 22:50
- * @description
+ * @description 司机用户服务类
  */
-
 @Service
 public class UserService {
 

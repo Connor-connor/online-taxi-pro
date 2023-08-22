@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @author LHP
- * @date 2023-07-12 21:39
- * @description
+ * @description 远程调用service-driver-user服务
  */
-
 @FeignClient("service-driver-user")
 public interface ServiceDriverUserClient {
 

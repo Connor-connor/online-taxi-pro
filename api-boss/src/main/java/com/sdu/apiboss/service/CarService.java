@@ -8,16 +8,19 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author LHP
- * @date 2023-07-13 2:16
- * @description
+ * @description 车辆服务类
  */
-
 @Service
 public class CarService {
 
     @Autowired
     ServiceDriverUserClient serviceDriverUserClient;
 
+    /**
+     * 添加车辆
+     * @param car 车辆信息
+     * @return 响应结果
+     */
     public ResponseResult addCar(Car car){
         return serviceDriverUserClient.addCar(car);
     }

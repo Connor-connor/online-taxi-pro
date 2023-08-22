@@ -1,15 +1,11 @@
-package com.sdu.servicedriveruser.controller;
+package com.sdu.apiboss.controller;
 
-
+import com.sdu.apiboss.service.CarService;
 import com.sdu.internalcommon.dto.Car;
 import com.sdu.internalcommon.dto.ResponseResult;
-import com.sdu.servicedriveruser.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -18,17 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class CarController {
+
     @Autowired
     CarService carService;
 
+    /**
+     * 添加车辆
+     * @param car 车辆信息
+     * @return 响应结果
+     */
     @PostMapping("/car")
-    public ResponseResult addCar(@RequestBody Car car){
+    public ResponseResult car(@RequestBody Car car){
         return carService.addCar(car);
-    }
-
-    @GetMapping("/car")
-    public ResponseResult<Car> getCarById(Long carId){
-        return carService.getCarById(carId);
     }
 
 }

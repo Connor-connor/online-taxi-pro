@@ -4,10 +4,8 @@ import lombok.Data;
 
 /**
  * @author LHP
- * @date 2023-07-13 9:06
- * @description
+ * @description 司机是否存在响应类
  */
-
 @Data
 public class DriverUserExistsResponse {
 

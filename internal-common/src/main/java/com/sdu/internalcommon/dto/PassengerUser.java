@@ -6,10 +6,8 @@ import java.time.LocalDateTime;
 
 /**
  * @author LHP
- * @date 2023-07-11 0:12
- * @description
+ * @description 乘客用户实体类
  */
-
 @Data
 public class PassengerUser {
 

@@ -12,10 +12,8 @@ import java.util.Map;
 
 /**
  * @author LHP
- * @date 2023-07-15 0:04
  * @description
  */
-
 @RestController
 @Slf4j
 public class SseController {
@@ -31,7 +29,7 @@ public class SseController {
     @GetMapping("/connect")
     public SseEmitter connect(@RequestParam Long userId, @RequestParam String identity){
         log.info("用户ID："+userId+",身份类型："+identity);
-        SseEmitter sseEmitter = new SseEmitter(0l);
+        SseEmitter sseEmitter = new SseEmitter(0L);
 
         String sseMapKey = SsePrefixUtils.generatorSseKey(userId,identity);
 
@@ -42,7 +40,7 @@ public class SseController {
 
     /**
      * 发送消息
-     * @param pushRequest
+     * @param pushRequest 推送请求
      * @return
      */
     @PostMapping("/push")

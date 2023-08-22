@@ -13,8 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author 李浩鹏
- * @since 2023-07-13
+ * @author LHP
+ * @description 司机车辆绑定关系控制类
  */
 @RestController
 @RequestMapping("/driver-car-binding-relationship")

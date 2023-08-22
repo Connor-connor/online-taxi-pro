@@ -13,10 +13,8 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * @author LHP
- * @date 2023-07-12 8:06
- * @description
+ * @description 高德地图接口调用类
  */
-
 @Service
 @Slf4j
 public class MapDirectionClient {
@@ -27,7 +25,16 @@ public class MapDirectionClient {
     @Autowired
     private RestTemplate restTemplate;
 
+    /**
+     * 根据出发地和目的地经纬度，调用高德地图接口，获取距离（米）和时长（分钟）
+     * @param depLongitude
+     * @param depLatitude
+     * @param destLongitude
+     * @param destLatitude
+     * @return
+     */
     public DirectionResponse direction(String depLongitude, String depLatitude, String destLongitude, String destLatitude) {
+
         // 组装请求调用url
         // https://restapi.amap.com/v3/direction/driving?origin=116.45925,39.910031&destination=116.587922,40.081577&extensions=base&output=json&key=78462a297c925d75cbfbf4e58c8e1b95
         StringBuilder urlBuild = new StringBuilder();
@@ -49,12 +56,17 @@ public class MapDirectionClient {
         String directionString = directionEntity.getBody();
         log.info("调用高德地图接口，返回值:" + directionString);
 
-        // 解析接口
+        // 解析返回值
         DirectionResponse directionResponse = parseDirectionEntity(directionString);
 
         return directionResponse;
     }
 
+    /**
+     * 解析高德地图接口返回值
+     * @param directionString 高德地图接口返回值
+     * @return 距离（米）和时长（分钟）
+     */
     private DirectionResponse parseDirectionEntity(String directionString) {
         DirectionResponse directionResponse = null;
         try {
@@ -66,7 +78,9 @@ public class MapDirectionClient {
                     if (result.has(AmapConfigConstants.ROUTE)) {
                         JSONObject routeObject = result.getJSONObject(AmapConfigConstants.ROUTE);
                         JSONArray pathsArray = routeObject.getJSONArray(AmapConfigConstants.PATHS);
-                        JSONObject pathObject = pathsArray.getJSONObject(0); // 只取第一条路径（速度最快）
+                        // 只取第一条路径（速度最快）
+                        // TODO: 有时间可以考虑多条路径的情况
+                        JSONObject pathObject = pathsArray.getJSONObject(0);
                         directionResponse = new DirectionResponse();
                         if (pathObject.has(AmapConfigConstants.DISTANCE)) {
                             int distance = pathObject.getInt(AmapConfigConstants.DISTANCE);
@@ -76,13 +90,9 @@ public class MapDirectionClient {
                             int duration = pathObject.getInt(AmapConfigConstants.DURATION);
                             directionResponse.setDuration(duration);
                         }
-
                     }
                 }
             }
-
-
-
         } catch (Exception e) {
             log.error("解析高德地图接口返回值异常", e);
         }

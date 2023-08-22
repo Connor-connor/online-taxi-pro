@@ -6,10 +6,8 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author LHP
- * @date 2023-07-12 9:49
- * @description
+ * @description 计价规则mapper
  */
-
 @Repository
 public interface PriceRuleMapper extends BaseMapper<PriceRule> {
 

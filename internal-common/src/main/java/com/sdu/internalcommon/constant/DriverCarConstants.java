@@ -2,10 +2,8 @@ package com.sdu.internalcommon.constant;
 
 /**
  * @author LHP
- * @date 2023-07-13 1:47
- * @description
+ * @description 司机车辆关系常量类
  */
-
 public class DriverCarConstants {
 
     // 司机车辆关系状态：绑定

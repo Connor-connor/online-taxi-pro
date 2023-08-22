@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * @author LHP
- * @date 2023-07-10 23:26
- * @description
+ * @description 用户控制类
  */
-
 @RestController
 public class UserController {
 
@@ -20,9 +18,10 @@ public class UserController {
 
     @PostMapping("/user")
     public ResponseResult loginOrRegister(@RequestBody VerificationCodeDTO verificationCodeDTO) {
+
         // 接收参数（获取手机号）
         String passengerPhone = verificationCodeDTO.getPassengerPhone();
-        System.out.println("手机号：" + passengerPhone);
+
         return userService.loginOrRegister(passengerPhone);
     }
 

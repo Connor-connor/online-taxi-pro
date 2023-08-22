@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * @author LHP
- * @date 2023-07-14 9:24
- * @description
+ * @description 调用远程service-order服务
  */
-
 @FeignClient("service-order")
 public interface ServiceOrderClient {
 

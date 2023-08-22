@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author LHP
- * @date 2023-07-13 23:27
- * @description
+ * @description 轨迹控制类
  */
-
 @RestController
 @RequestMapping("/track")
 public class TrackController {
@@ -20,6 +18,11 @@ public class TrackController {
     @Autowired
     TrackService trackService;
 
+    /**
+     * 添加轨迹
+     * @param tid 终端id
+     * @return 响应结果
+     */
     @PostMapping("/add")
     public ResponseResult add(String tid){
 

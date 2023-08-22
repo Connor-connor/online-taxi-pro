@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author LHP
- * @date 2023-07-13 8:58
- * @description
+ * @description 验证码控制类
  */
-
 @RestController
 @Slf4j
 public class VerificationCodeController {
@@ -35,8 +33,6 @@ public class VerificationCodeController {
 
         String driverPhone = verificationCodeDTO.getDriverPhone();
         String verificationCode = verificationCodeDTO.getVerificationCode();
-
-        System.out.println("手机号"+driverPhone+",验证码："+verificationCode);
 
         return verificationCodeService.checkCode(driverPhone,verificationCode);
     }

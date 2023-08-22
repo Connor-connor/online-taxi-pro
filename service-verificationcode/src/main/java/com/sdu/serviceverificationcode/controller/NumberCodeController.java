@@ -8,23 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author LHP
- * @date 2023-07-10 8:26
- * @description
+ * @description 验证码控制类
  */
-
 @RestController
 public class NumberCodeController {
 
     @GetMapping("/numberCode/{size}")
     public ResponseResult numberCode(@PathVariable("size") int size) {
 
-        System.out.println("size = " + size);
-
         // 生成验证码
         double mathRandom = (Math.random() * 9 + 1) * (Math.pow(10, size-1));
-        System.out.println(mathRandom);
         int resultInt = (int) mathRandom;
-        System.out.println("generator src code: " + resultInt);
 
         // 定义返回值
         NumberCodeResponse response = new NumberCodeResponse();

@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * @author LHP
- * @date 2023-07-14 17:46
- * @description
+ * @description 调用远程service-price服务
  */
-
 @FeignClient("service-price")
 public interface ServicePriceClient {
 

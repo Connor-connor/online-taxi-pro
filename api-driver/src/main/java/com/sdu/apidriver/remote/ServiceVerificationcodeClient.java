@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @author LHP
- * @date 2023-07-13 9:02
- * @description
+ * @description 远程调用service-verificationcode服务
  */
-
 @FeignClient("service-verificationcode")
 public interface ServiceVerificationcodeClient {
 

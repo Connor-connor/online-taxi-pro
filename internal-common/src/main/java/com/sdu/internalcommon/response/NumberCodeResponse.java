@@ -4,10 +4,8 @@ import lombok.Data;
 
 /**
  * @author LHP
- * @date 2023-07-10 9:09
- * @description
+ * @description 验证码响应类：获取到验证码后返回给调用者的响应类
  */
-
 @Data
 public class NumberCodeResponse {
 

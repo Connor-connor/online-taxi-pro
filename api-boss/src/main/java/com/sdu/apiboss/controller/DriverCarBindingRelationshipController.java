@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author LHP
- * @date 2023-07-13 2:18
- * @description
+ * @description 司机车辆绑定关系控制类
  */
-
 @RestController
 @RequestMapping("/driver-car-binding-relationship")
 public class DriverCarBindingRelationshipController {

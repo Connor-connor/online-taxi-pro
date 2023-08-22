@@ -15,10 +15,8 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * @author LHP
- * @date 2023-07-12 20:03
- * @description
+ * @description 司机用户控制类
  */
-
 @RestController
 @Slf4j
 public class UserController {
@@ -28,8 +26,8 @@ public class UserController {
 
     /**
      * 添加司机
-     * @param driverUser
-     * @return
+     * @param driverUser 司机信息
+     * @return 响应结果
      */
     @PostMapping("/user")
     public ResponseResult addUser(@RequestBody DriverUser driverUser){
@@ -39,8 +37,8 @@ public class UserController {
 
     /**
      * 修改司机信息
-     * @param driverUser
-     * @return
+     * @param driverUser 司机信息
+     * @return 响应结果
      */
     @PutMapping("/user")
     public ResponseResult updateUser(@RequestBody DriverUser driverUser){
@@ -50,8 +48,8 @@ public class UserController {
 
     /**
      * 查询司机，如果需要按照司机的多个条件做查询，那么此处用 /user
-     * @param driverPhone
-     * @return
+     * @param driverPhone 司机手机号
+     * @return 响应结果
      */
     @GetMapping("/check-driver/{driverPhone}")
     public ResponseResult<DriverUserExistsResponse> getUser(@PathVariable("driverPhone") String driverPhone){

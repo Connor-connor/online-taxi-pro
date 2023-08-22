@@ -1,8 +1,6 @@
 package com.sdu.apiboss.controller;
 
-import com.sdu.apiboss.service.CarService;
 import com.sdu.apiboss.service.DriverUserService;
-import com.sdu.internalcommon.dto.Car;
 import com.sdu.internalcommon.dto.DriverUser;
 import com.sdu.internalcommon.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author LHP
- * @date 2023-07-12 21:19
- * @description
+ * @description 司机用户控制类
  */
-
 @RestController
 public class DriverUserController {
 
@@ -25,8 +21,8 @@ public class DriverUserController {
 
     /**
      * 添加司机
-     * @param driverUser
-     * @return
+     * @param driverUser 司机信息
+     * @return 响应结果
      */
     @PostMapping("/driver-user")
     public ResponseResult addDriverUser(@RequestBody DriverUser driverUser){
@@ -35,20 +31,12 @@ public class DriverUserController {
 
     /**
      * 修改司机信息
-     * @param driverUser
-     * @return
+     * @param driverUser 司机信息
+     * @return 响应结果
      */
     @PutMapping("/driver-user")
     public ResponseResult updateDriverUser(@RequestBody DriverUser driverUser){
         return driverUserService.updateDriverUser(driverUser);
-    }
-
-    @Autowired
-    CarService carService;
-
-    @PostMapping("/car")
-    public ResponseResult car(@RequestBody Car car){
-        return carService.addCar(car);
     }
 
 }

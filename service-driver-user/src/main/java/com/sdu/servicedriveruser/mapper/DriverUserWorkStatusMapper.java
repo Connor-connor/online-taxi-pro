@@ -6,10 +6,8 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author LHP
- * @date 2023-07-13 10:41
- * @description
+ * @description 司机用户工作状态mapper
  */
-
 @Repository
 public interface DriverUserWorkStatusMapper extends BaseMapper<DriverUserWorkStatus> {
 }

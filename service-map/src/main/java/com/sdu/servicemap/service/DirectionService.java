@@ -8,10 +8,8 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author LHP
- * @date 2023-07-12 1:29
- * @description
+ * @description 预估价格服务类
  */
-
 @Service
 public class DirectionService {
 
@@ -20,11 +18,11 @@ public class DirectionService {
 
     /**
      * 根据出发地和目的地经纬度，获取距离（米）和时长（分钟）
-     * @param depLongitude
-     * @param depLatitude
-     * @param destLongitude
-     * @param destLatitude
-     * @return
+     * @param depLongitude 出发地经度
+     * @param depLatitude 出发地纬度
+     * @param destLongitude 目的地经度
+     * @param destLatitude 目的地纬度
+     * @return 预估价格
      */
     public ResponseResult driving(String depLongitude, String depLatitude, String destLongitude, String destLatitude) {
 

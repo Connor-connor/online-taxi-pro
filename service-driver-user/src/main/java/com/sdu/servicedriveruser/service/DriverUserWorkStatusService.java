@@ -41,6 +41,10 @@ public class DriverUserWorkStatusService {
         Map<String,Object> queryMap = new HashMap<>();
         queryMap.put("driver_id",driverId);
         List<DriverUserWorkStatus> driverUserWorkStatuses = driverUserWorkStatusMapper.selectByMap(queryMap);
+        if (driverUserWorkStatuses == null || driverUserWorkStatuses.size() == 0) {
+            // TODO: 这里应该返回什么信息？
+            return ResponseResult.fail(null);
+        }
         DriverUserWorkStatus driverUserWorkStatus = driverUserWorkStatuses.get(0);
 
         return ResponseResult.success(driverUserWorkStatus);

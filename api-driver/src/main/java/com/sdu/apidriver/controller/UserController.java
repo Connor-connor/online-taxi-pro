@@ -13,16 +13,19 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author LHP
- * @date 2023-07-12 22:49
- * @description
+ * @description 司机用户控制类
  */
-
 @RestController
 public class UserController {
 
     @Autowired
     private UserService userService;
 
+    /**
+     * 司机修改司机（自己）信息
+     * @param driverUser 司机信息
+     * @return ResponseResult
+     */
     @PutMapping("/user")
     public ResponseResult updateUser(@RequestBody DriverUser driverUser){
         return userService.updateUser(driverUser);

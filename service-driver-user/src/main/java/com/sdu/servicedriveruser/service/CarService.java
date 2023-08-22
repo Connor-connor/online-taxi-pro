@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author 李浩鹏
- * @since 2023-07-13
+ * @author LHP
+ * @description 车辆服务类
  */
 @Service
 public class CarService {
@@ -58,6 +58,10 @@ public class CarService {
 
         List<Car> cars = carMapper.selectByMap(map);
 
+        if (cars.size() == 0) {
+            // TODO: 这里应该返回什么信息？
+            return ResponseResult.fail("没有此车辆");
+        }
         return ResponseResult.success(cars.get(0));
 
     }

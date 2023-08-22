@@ -4,10 +4,8 @@ import lombok.Data;
 
 /**
  * @author LHP
- * @date 2023-07-12 1:32
- * @description
+ * @description 响应类
  */
-
 @Data
 public class DirectionResponse {
 

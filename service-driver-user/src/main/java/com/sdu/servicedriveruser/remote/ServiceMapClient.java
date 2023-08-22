@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author LHP
- * @date 2023-07-13 23:11
- * @description
+ * @description 远程调用service-map服务
  */
-
 @FeignClient("service-map")
 public interface ServiceMapClient {
 

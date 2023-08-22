@@ -10,10 +10,8 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author LHP
- * @date 2023-07-12 0:06
- * @description
+ * @description 预估价格服务类
  */
-
 @Service
 @Slf4j
 public class ForecastPriceService {
@@ -23,20 +21,14 @@ public class ForecastPriceService {
 
     /**
      * 根据出发地和目的地经纬度，预估价格
-     * @param depLongitude
-     * @param depLatitude
-     * @param destLongitude
-     * @param destLatitude
-     * @return
+     * @param depLongitude 出发地经度
+     * @param depLatitude 出发地纬度
+     * @param destLongitude 目的地经度
+     * @param destLatitude 目的地纬度
+     * @return 预估价格
      */
     public ResponseResult forecastPrice(String depLongitude, String depLatitude, String destLongitude, String destLatitude, String cityCode, String vehicleType) {
 
-        log.info("出发地经度：" + depLongitude);
-        log.info("出发地纬度：" + depLatitude);
-        log.info("目的地经度：" + destLongitude);
-        log.info("目的地纬度：" + destLatitude);
-
-        log.info("调用计价服务，预估价格");
         ForecastPriceDTO forecastPriceDTO = new ForecastPriceDTO();
         forecastPriceDTO.setDepLongitude(depLongitude);
         forecastPriceDTO.setDepLatitude(depLatitude);

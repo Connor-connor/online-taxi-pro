@@ -6,10 +6,8 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author LHP
- * @date 2023-07-14 10:10
- * @description
+ * @description 订单mapper
  */
-
 @Repository
 public interface OrderInfoMapper extends BaseMapper<OrderInfo> {
 

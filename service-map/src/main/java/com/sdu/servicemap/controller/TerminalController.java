@@ -13,10 +13,8 @@ import java.util.List;
 
 /**
  * @author LHP
- * @date 2023-07-13 22:48
- * @description
+ * @description 终端控制类
  */
-
 @RestController
 @RequestMapping("/terminal")
 public class TerminalController {
@@ -31,8 +29,8 @@ public class TerminalController {
      * @return
      */
     @PostMapping("/add")
-    public ResponseResult<TerminalResponse> add(String name , String desc){
-        return terminalService.add(name , desc);
+    public ResponseResult<TerminalResponse> add(String name, String desc){
+        return terminalService.add(name, desc);
     }
 
     /**

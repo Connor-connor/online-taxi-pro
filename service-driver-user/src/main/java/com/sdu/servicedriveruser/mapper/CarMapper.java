@@ -5,10 +5,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author 李浩鹏
- * @since 2023-07-13
+ * @author LHP
+ * @description 车辆mapper
  */
-
 @Repository
 public interface CarMapper extends BaseMapper<Car> {
 
